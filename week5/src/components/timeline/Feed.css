@@ -1,0 +1,9 @@
+.feed{
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    margin: 10px auto;
+    width: 600px;
+    height: 70px;
+    border-radius: 20px;
+    background: white;
+}

@@ -1,0 +1,48 @@
+.Header{
+    width: 100%;
+    height: 50px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    padding-bottom: 8px;
+    border-bottom: solid 1px #cdcdcd;
+}
+
+.Header h1{
+    width: 150px;
+    height: 21px;
+    font-weight: bolder;
+    font-size: 25px;
+    line-height: 21px;
+    text-align: center;
+    margin-left: 0;
+    background: linear-gradient(to bottom, #0099ff, rgb(82, 177, 250));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.Header ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin-left: 30%;
+}
+
+.Header ul li{
+    margin-left: 40px;
+    text-decoration:none;
+}
+
+.Header ul li:nth-child(2){
+    margin-left: 30px;
+}
+
+a{
+    text-decoration: none;
+    fill : dimgray;
+}
+
+.active {
+    fill:#0099ff
+}
+

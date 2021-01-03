@@ -1,0 +1,15 @@
+.TimelinePage {
+    width: 100%;
+    height: 100%;
+    background-color: #e0dede;
+    display: flex;
+    flex-direction: column;
+}
+.Timeline-inner{
+    width: 38%;
+    margin: 70px auto 20px;
+}
+
+.Timeline-inner2{
+    background: gainsboro;
+}
