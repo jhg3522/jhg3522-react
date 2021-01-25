@@ -27,8 +27,8 @@ export function Write(props) {
     return (
         <>
             <div className='Write'>
-                <input  name="owner" type = "text" placeholder = "작성자" value={inputs.owner} onChange={onChangeInput}/>
-                <textarea  name="content" placeholder = "내용" value={inputs.content} onChange={onChangeInput}/>
+                <input  name="owner" type = "text"  value={inputs.owner} onChange={onChangeInput}/>
+                <textarea  name="content" value={inputs.content} onChange={onChangeInput}/>
                 <button  onClick={postBtn}>POST</button>
             </div>
         </>

@@ -2,21 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from "./components/Header";
 import Home from "./components/Home";
-import {TimelinePage} from "./components/TimelinePage";
+import {TimelinePage} from "./page/TimelinePage";
 import Informations from "./components/Info";
 import './index.css';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import reportWebVitals from "./reportWebVitals";
+import {Login} from "./page/Login";
+import {SignUp} from "./page/Signup";
+
 
 function App(){
   return(
     <div>
         <Header/>
         <Switch>
-          <Route exact path="/"><Home/></Route>
-          <Route path="/Information/"><Informations/></Route>
-          <Route path="/TimelinePage/"><TimelinePage/></Route>
-          <Route path="/">Not found</Route>
+            <Route exact path="/"><Home/></Route>
+            <Route path="/Information/"><Informations/></Route>
+            <Route path="/TimelinePage/"><TimelinePage/></Route>
+            <Route path="/login/"><Login/></Route>
+            <Route path="/signup/"><SignUp/></Route>
+            <Route path="/">Not found</Route>
         </Switch>
     </div>
   )

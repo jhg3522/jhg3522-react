@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import './TimelinePage.css';
-import {Write} from "./timeline/Write";
-import {TimeLine} from "./timeline/TimeLine";
+import {Write} from "../components/timeline/Write";
+import {TimeLine} from "../components/timeline/TimeLine";
 import {createFeed,readFeeds} from "../server/server";
 
 export function TimelinePage(props){
