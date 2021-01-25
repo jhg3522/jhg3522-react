@@ -1,7 +1,9 @@
 import React,{useState} from 'react';
 import * as api from '../server/server';
+import {useHistory} from "react-router";
 
 export function SignUp(props) {
+    const history = useHistory();
     const [input, setInput] = useState({
         username: '',
         email: '',
@@ -19,6 +21,7 @@ export function SignUp(props) {
             token.non_field_errors.map((e) => alert(e))
         } else{
             alert("회원가입이 완료되었습니다!")
+            history.push('/')
         }
     }
 
