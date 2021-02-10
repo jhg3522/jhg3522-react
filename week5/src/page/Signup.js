@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import * as api from '../server/server';
 import {useHistory} from "react-router";
+import './Signup.css'
 
 export function SignUp(props) {
     const history = useHistory();
@@ -16,19 +17,24 @@ export function SignUp(props) {
         })
     };
     const signup = async() => {
-        const token = await api.createUser(input.username, input.email, input.password);
-        if(token.non_field_errors){
-            token.non_field_errors.map((e) => alert(e))
-        } else{
+        if (input.username && input.email && input.password){
+            const token = await api.createUser(input.username, input.email, input.password);
             alert("회원가입이 완료되었습니다!")
+            console.log(token);
             history.push('/')
         }
+        else{
+            alert("입력정보를 확인하세요")
+        }
+
     }
 
     return <>
-        이메일 : <input type="text" onChange={(e) => setInputData('email',e.target.value)}/>
-        아이디 : <input type="text" onChange={(e) => setInputData('username',e.target.value)}/>
-        비밀번호 : <input type="password" onChange={(e) => setInputData('password',e.target.value)}/>
-        <button onClick={signup}>회원가입</button>
+        <div className="signup-form">
+            <p>이메일 : </p><input type="text" onChange={(e) => setInputData('email',e.target.value)}/>
+            <p>아이디 : </p><input type="text" onChange={(e) => setInputData('username',e.target.value)}/>
+            <p>비밀번호 : </p><input type="password" onChange={(e) => setInputData('password',e.target.value)}/>
+            <button onClick={signup}><p>회원가입</p></button>
+        </div>
     </>;
 }

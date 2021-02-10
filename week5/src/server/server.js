@@ -1,60 +1,101 @@
-import React from 'react';
+const token = window.localStorage.getItem('token');
 
-
-export async function createFeed(name, body) {
-    const result = await fetch('http://ec2-52-78-131-251.ap-northeast-2.compute.amazonaws.com/feed/', {
+export async function createFeed(content) {
+    const result = await fetch('https://react-js-sample-api.kmuwink.net/feed/', {
         method: 'post',
         headers: {
+            Authorization: "Token " + token,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            owner: name,
-            content: body,
+            content,
         }),
-    }).then(res => res.json())
-        .then(response => console.log('Success:', JSON.stringify(response)))
-        .catch(error => console.error('Error:', error));
+    });
+    console.log(result);
+    window.location.reload();
 }
 
-export async function readFeeds(){
-    const readResult = await fetch('http://ec2-52-78-131-251.ap-northeast-2.compute.amazonaws.com/feed/',{
-        method: 'get',
+export async function createComment(id, content) {
+    const result = await fetch(`https://react-js-sample-api.kmuwink.net/feed/${id}/comment/`, {
+        method: 'post',
+        headers: {
+            Authorization: "Token " + token,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            content,
+        }),
     });
-    const readJson = await readResult.json();
-    const propsData = readJson.map(read =>{
-        return {
-            name: read.owner,
-            body: read.content
+    console.log(result);
+    window.location.reload();
+}
+
+export async function readFeeds() {
+    const readResult = await fetch('https://react-js-sample-api.kmuwink.net/feed/',{
+        method:'get',
+        headers: {
+            Authorization: "Token " + token,
         }
-    });
-    return propsData.reverse();
+    })
+    const readJson = await readResult.json();
+    return readJson.reverse();
 }
 
-export async function createToken(id,pw){
-    const res = await fetch('http://ec2-52-78-131-251.ap-northeast-2.compute.amazonaws.com/api-token-auth/',{
+export async function readFeed(id) {
+    const readResult = await fetch(`https://react-js-sample-api.kmuwink.net/feed/${id}/`,{
+        method:'get',
+        headers: {
+            Authorization: "Token " + token,
+        }
+    })
+    return await readResult.json();
+}
+
+export async function readComments(id) {
+    const readResult = await fetch(`https://react-js-sample-api.kmuwink.net/feed/${id}/comment/`,{
+        method:'get',
+        headers: {
+            Authorization: "Token " + token,
+        }
+    })
+    return await readResult.json();
+}
+
+export async function createToken(username,password){
+    const res = await fetch('https://react-js-sample-api.kmuwink.net/api-token-auth/',{
         method: 'post',
         headers:{
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            username: id,
-            password: pw,
-        })
+            username,
+            password
+        }),
     });
     return await res.json();
-    }
+}
 
-export async function createUser(id, email, pw) {
-    const res = await fetch('http://ec2-52-78-131-251.ap-northeast-2.compute.amazonaws.com/user/', {
+export async function createUser(username, email, password) {
+    const res = await fetch('https://react-js-sample-api.kmuwink.net/user/', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            username: id,
-            email: email,
-            password: pw,
+            username,
+            email,
+            password,
         })
     });
     return await res.json();
+}
+export async function readUser() {
+    const readResult = await fetch('https://react-js-sample-api.kmuwink.net/user/',{
+        method:'get'
+    })
+    const readJson = await readResult.json();
+    return {
+        username: readJson.username,
+        email: readJson.email,
+    };
 }

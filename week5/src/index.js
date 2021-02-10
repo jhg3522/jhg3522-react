@@ -9,6 +9,7 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import reportWebVitals from "./reportWebVitals";
 import {Login} from "./page/Login";
 import {SignUp} from "./page/Signup";
+import {DetailPage} from "./page/DetailPage";
 
 
 function App(){
@@ -19,6 +20,7 @@ function App(){
             <Route exact path="/"><Home/></Route>
             <Route path="/Information/"><Informations/></Route>
             <Route path="/TimelinePage/"><TimelinePage/></Route>
+            <Route path="/DetailPage/:id"><DetailPage/></Route>
             <Route path="/login/"><Login/></Route>
             <Route path="/signup/"><SignUp/></Route>
             <Route path="/">Not found</Route>

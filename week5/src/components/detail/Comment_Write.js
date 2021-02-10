@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import './Write.css'
+
+import './Commnet_Write.css'
 
 
-export function Write(props) {
+export function Comment_Write(props) {
     const [inputs, setInputs] = useState({
-        content: "",
+        content: '',
     });
 
     const onChangeInput = e => {
@@ -14,16 +15,16 @@ export function Write(props) {
 
 
     const postBtn = () => {
-        props.writeFunc(inputs.content);
+        props.writeFunc(props.p_id,inputs.content);
         setInputs({
-            content: '',
+            content: ''
         })
     };
 
     return (
         <>
-            <div className='Write'>
-                <textarea  name="content"   value={inputs.content} onChange={onChangeInput}/>
+            <div className='Comment_Write'>
+                <textarea  name="content" value={inputs.content} onChange={onChangeInput}/>
                 <button  onClick={postBtn}>POST</button>
             </div>
         </>

@@ -1,0 +1,27 @@
+.DetailPage {
+    width: 100%;
+    height: 100%;
+    background-color: #e0dede;
+    display: flex;
+    flex-direction: column;
+}
+.DetailPage-inner{
+    width: 50%;
+    margin: 70px auto 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.DetailPage-inner h2{
+    margin-left: 50px;
+}
+
+.DetailPage-inner2{
+    background: gainsboro;
+}
+
+.DetailPage-inner .feed {
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+}
